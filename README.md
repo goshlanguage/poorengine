@@ -1,6 +1,6 @@
-# stick engine
+# poor engine
 
-In terms of sophistication, this project aims to be a rudimentary engine, such as a stick structure would compare to stone works.
+In terms of sophistication, this project aims to be a rudimentary game engine.
 
 This project leverages the `SDL2` project, _Simple DirectMedia Layer_. See:
 
