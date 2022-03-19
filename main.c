@@ -1,4 +1,6 @@
 #include "engine.h"
+#include "player.h"
+#include "state.h"
 
 #include <SDL2/SDL.h>
 #include <stdbool.h>
@@ -39,7 +41,14 @@ main()
         return -1;
     }
 
+    Player player = NewPlayer();
+
+    State state;
+    state.player = player;
+
     Engine engine = NewEngine(window, window_surface);
+    engine.state = state;
+
     loop(engine);
 
     return 0;

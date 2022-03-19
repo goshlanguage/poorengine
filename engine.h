@@ -1,7 +1,7 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
 
-# include "state.h"
+#include "state.h"
 #include <SDL2/SDL.h>
 
 struct engine {
