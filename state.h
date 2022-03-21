@@ -3,9 +3,8 @@
 
 #include "player.h"
 
-struct state {
-    Player player;
-};
-typedef struct state State;
+typedef struct state {
+    Player* player;
+} State;
 
 #endif

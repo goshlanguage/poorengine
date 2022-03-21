@@ -44,12 +44,19 @@ main()
     Player player = NewPlayer();
 
     State state;
-    state.player = player;
+    state.player = &player;
 
     Engine engine = NewEngine(window, window_surface);
     engine.state = state;
 
     loop(engine);
+
+    // free window and surface
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
+    window = NULL;
+    window_surface = NULL;
 
     return 0;
 }

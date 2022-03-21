@@ -5,15 +5,16 @@
 
 #include <SDL2/SDL.h>
 
-struct player {
-    int x, y;
+typedef struct player {
+    float X, Y;
+    float VX, VY;
+    float maxVX, maxVY;
     int width, height;
     SDL_Surface* sprite;
-};
-typedef struct player Player;
+} Player;
 
 extern Player NewPlayer();
-extern void Draw(Player p, SDL_Surface *window_surface);
-extern void Update(Player);
+extern void Draw(Player*, SDL_Surface *window_surface);
+extern void Update(Player*);
 
 #endif
