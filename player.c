@@ -63,20 +63,36 @@ Update(Player* p, double delta_time)
     (*p).Y += (*p).VY;
 
     // Wrap the sprite around if it goes out of bounds of the window
-    if ((*p).X > 680.0) {
-        (*p).X -= 680.0;
+    // if ((*p).X > 680.0) {
+    //     (*p).X -= 680.0;
+    // }
+
+    // if ((*p).X < 0.0) {
+    //     (*p).X += 680.0;
+    // }
+
+    // if ((*p).Y > 480.0) {
+    //     (*p).Y -= 480.0;
+    // }
+
+    // if ((*p).Y < 0.0) {
+    //     (*p).Y += 480.0;
+    // }
+
+    if ((*p).X > (680.0 - 2*p->width)) {
+        (*p).X = (680.0 - 2*p->width);
     }
 
     if ((*p).X < 0.0) {
-        (*p).X += 680.0;
+        (*p).X = 0.0;
     }
 
-    if ((*p).Y > 480.0) {
-        (*p).Y -= 480.0;
+    if ((*p).Y > (480.0 - 2*p->width)) {
+        (*p).Y = (480.0 - 2*p->width);
     }
 
     if ((*p).Y < 0.0) {
-        (*p).Y += 480.0;
+        (*p).Y = 0.0;
     }
 
     // Moving mechanics (right, left, up, down)
