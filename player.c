@@ -16,23 +16,31 @@ NewPlayer() {
         printf("SDL2 Error: %s\n", SDL_GetError());
     }
 
+    SDL_Rect srcrect;
+
+    srcrect.x = 160;
+    srcrect.y = 240;
+    srcrect.w = 16;
+    srcrect.h = 16;
+
     Player player;
 
     player.X = 340.0;
     player.Y = 240.0;
     player.VX = 0.0;
     player.VY = 0.0;
-    player.maxVX = 1.0;
-    player.maxVY = 1.0;
+    player.maxVX = 0.5;
+    player.maxVY = 0.5;
     player.width = 16;
     player.height = 16;
     player.sprite = image;
+    player.rect = srcrect;
 
     return player;
 }
 
 void
-Update(Player* p)
+Update(Player* p, double delta_time)
 {
     if ((*p).VX > (*p).maxVX) {
         (*p).VX = (*p).maxVX;
@@ -112,20 +120,19 @@ Draw(Player* p, SDL_Surface *window_surface)
 { 
     if (p->sprite)
     {
-        SDL_Rect srcrect;
-
-        srcrect.x = 16;
-        srcrect.y = 48;
-        srcrect.w = 16;
-        srcrect.h = 16;
-
         SDL_Rect dstrect;
 
         dstrect.x = (*p).X;
         dstrect.y = (*p).Y;
-        dstrect.w = 64;
-        dstrect.h = 64;
+        dstrect.w = 32;
+        dstrect.h = 32;
 
-        SDL_BlitScaled(p->sprite, &srcrect, window_surface, &dstrect);
+        if (p->VX < 0) {
+            p->rect.x = 0;
+        } else if (p->VX > 0) {
+            p->rect.x = 16;
+        }
+
+        SDL_BlitScaled(p->sprite, &p->rect, window_surface, &dstrect);
     }
 }

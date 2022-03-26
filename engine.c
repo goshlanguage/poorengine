@@ -24,7 +24,7 @@ draw(Engine engine) {
 
 void
 update(Engine engine) {
-    Update(engine.state.player);
+    Update(engine.state.player, 1.0/60.0);
 }
 
 // loop is our main loop, it's responsible for processing events
@@ -46,16 +46,16 @@ loop(Engine engine)
                 switch (e.key.keysym.sym)
                 {
                 case SDLK_w: 
-                    engine.state.player->VY -= 1;
+                    engine.state.player->VY -= 0.5;
                     break;
                 case SDLK_a:
-                    engine.state.player->VX -= 1;
+                    engine.state.player->VX -= 0.5;
                     break;
                 case SDLK_d:
-                    engine.state.player->VX += 1;
+                    engine.state.player->VX += 0.5;
                     break;
                 case SDLK_s:
-                    engine.state.player->VY += 1;
+                    engine.state.player->VY += 0.5;
                     break;
                 case SDLK_p:
                     printf("coords: (%f, %f)\n", engine.state.player->X, engine.state.player->Y);

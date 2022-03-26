@@ -11,10 +11,11 @@ typedef struct player {
     float maxVX, maxVY;
     int width, height;
     SDL_Surface* sprite;
+    SDL_Rect rect;
 } Player;
 
 extern Player NewPlayer();
 extern void Draw(Player*, SDL_Surface *window_surface);
-extern void Update(Player*);
+extern void Update(Player*, double);
 
 #endif
